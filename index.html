@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="app.css">
     <title>Shopping List</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="" alt="">
+            <img src="shopping.png" alt="shopping">
             <h1>Shopping List</h1>
         </header>
         <form action="" class="inputForm">
-            <input class = 'formBtn' type="text">
-            <input type="submit" value="+ Add Item">
+            <input type="text">
+            <input class = 'formBtn' type="submit" value="+ Add Item">
         </form>
         <input class = 'filterText' type="text">
-        <ul class="itemList"></ul>
+        <ul class="itemList">
+            <li class="item"><span>Toothpaste</span><i class="fa-solid fa-xmark"></i></li>
+            <li class="item"><span>Washing powder</span><i class="fa-solid fa-xmark"></i></li>
+        </ul>
         <button class="btn">Clear All</button>
     </div>
     <script src="script.js"></script>
