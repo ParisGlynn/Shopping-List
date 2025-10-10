@@ -125,3 +125,7 @@ form .formBtn:hover, form .formBtn:active {
     background-color: var(--text-color);
     color: var(--background-color);
 }
+
+.hide {
+    display: none;
+}

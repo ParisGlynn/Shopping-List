@@ -17,12 +17,9 @@
             <input type="text" name = 'item' id = 'itemInput' placeholder="Enter item">
             <input class = 'formBtn' id = 'formBtn' type="submit" value="+ Add Item">
         </form>
-        <input class = 'filterText' type="text" placeholder="Filter items">
-        <ul class="itemList" id = 'itemList'>
-            <li class="item"><span>Toothpaste</span><i class="fa-solid fa-xmark"></i></li>
-            <li class="item"><span>Washing powder</span><i class="fa-solid fa-xmark"></i></li>
-        </ul>
-        <button class="btn">Clear All</button>
+        <input class = 'filterText hide' id = 'filterText' type="text" placeholder="Filter items">
+        <ul class="itemList" id = 'itemList'></ul>
+        <button class="btn hide" id = 'clearBtn'>Clear All</button>
     </div>
     <script src="script.js"></script>
 </body>
