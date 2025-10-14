@@ -36,17 +36,20 @@ function addItem(e) {
     itemList.appendChild(li);
 
     checkUI();
-    
+
     itemInput.value = '';
 }
 
 function filterItems(e) {
     const items = document.querySelectorAll('.item');
     const matchPhrase = e.target.value;
+
     items.forEach(item => {
-        const TheValue = item.firstChild.innerText;
-        if(TheValue.includes(matchPhrase.toLowerCase())) {
-            console.log('hit');
+        const TheValue = item.firstChild.textContent.toLowerCase();
+        if(TheValue.indexOf(matchPhrase.toLowerCase()) !== -1) {
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
         }
     });
 }
