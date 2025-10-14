@@ -2,20 +2,24 @@ const inputForm = document.querySelector('#inputForm');
 const itemInput = document.querySelector('#itemInput');
 const formBtn = document.querySelector('#formBtn');
 const filterText = document.querySelector('#filterText');
-const itemList = document.querySelector('#itemList');
+
 const clearBtn = document.querySelector('#clearBtn');
+const items = document.querySelectorAll('.item');
 
 inputForm.addEventListener('submit', addItem);
 clearBtn.addEventListener('click', clearList);
 document.addEventListener('click', removeItem);
+filterText.addEventListener('input', filterItems);
+
+checkUI();
 
 function addItem(e) {
     e.preventDefault();
-    if(itemInput.value === '') return;
-    if(itemList.innerHTML === '') {
-        filterText.classList.remove('hide');
-        clearBtn.classList.remove('hide');
+    if(itemInput.value === '') {
+        alert('Please add an item');
+        return;
     }
+
     const itemToAdd = itemInput.value;
     const li = document.createElement('li');
     const span = document.createElement('span');
@@ -31,17 +35,42 @@ function addItem(e) {
 
     itemList.appendChild(li);
 
+    checkUI();
+    
     itemInput.value = '';
+}
+
+function filterItems(e) {
+    const items = document.querySelectorAll('.item');
+    const matchPhrase = e.target.value;
+    items.forEach(item => {
+        const TheValue = item.firstChild.innerText;
+        if(TheValue.includes(matchPhrase.toLowerCase())) {
+            console.log('hit');
+        }
+    });
 }
 
 function removeItem(e) {
     if(e.target.classList.contains('fa-xmark')) {
         e.target.parentElement.remove();
     }
+    checkUI();
 }
 
 function clearList() {
     itemList.innerHTML = '';
     filterText.classList.add('hide');
     clearBtn.classList.add('hide');
+}
+
+function checkUI() {
+    const itemList = document.querySelector('#itemList');
+    if(itemList.innerHTML === '') {
+        filterText.classList.add('hide');
+        clearBtn.classList.add('hide');
+        } else {
+            filterText.classList.remove('hide');
+            clearBtn.classList.remove('hide');
+        }
 }
