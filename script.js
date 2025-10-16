@@ -10,6 +10,7 @@ inputForm.addEventListener('submit', addItem);
 clearBtn.addEventListener('click', clearList);
 document.addEventListener('click', removeItem);
 filterText.addEventListener('input', filterItems);
+document.addEventListener('DOMContentLoaded', addItemsToDom);
 
 checkUI();
 
@@ -88,4 +89,34 @@ function addItemToLocalStorage(item) {
     storageItems.push(item);
 
     localStorage.setItem('items', JSON.stringify(storageItems));
+}
+
+function addItemsToDom(item) {
+    const localStorageItems = getItemsFromLocalStorage();
+    localStorageItems.forEach((item) => {
+        const itemToAdd = itemInput.value;
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        const i = document.createElement('i');
+        const text = document.createTextNode(item);
+        
+        li.className = 'item';
+        span.appendChild(text);
+        i.classList = "fa-solid fa-xmark";
+
+        li.appendChild(span);
+        li.appendChild(i);
+
+        itemList.appendChild(li);
+
+        checkUI();
+    });   
+}
+
+function getItemsFromLocalStorage() {
+    if(localStorage.getItem('items') === null) {
+        localStorage.setItem('items', JSON.stringify([]));
+        }
+    const storageItems = JSON.parse(localStorage.getItem('items'));
+    return storageItems;
 }
