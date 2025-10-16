@@ -35,6 +35,8 @@ function addItem(e) {
 
     itemList.appendChild(li);
 
+    addItemToLocalStorage(itemToAdd);
+
     checkUI();
 
     itemInput.value = '';
@@ -76,4 +78,14 @@ function checkUI() {
             filterText.classList.remove('hide');
             clearBtn.classList.remove('hide');
         }
+}
+
+function addItemToLocalStorage(item) {
+    if(localStorage.getItem('items') === null) {
+        localStorage.setItem('items', JSON.stringify([]));
+        }
+    const storageItems = JSON.parse(localStorage.getItem('items'));
+    storageItems.push(item);
+
+    localStorage.setItem('items', JSON.stringify(storageItems));
 }
